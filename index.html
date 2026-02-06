@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
+<!-- モバイル端末用の設定 -->
+<meta name="viewport" content="width=divice-width, initial-scale=1.0">
+<!-- PyScriptを読み込む-->
 <script type="module" src="https://pyscript.net/releases/2025.8.1/core.js"></script>
+<!-- HTMLの本体 -->
+<body style="text-align:center;">
+    <div><button mpy-click="show_dice">サイコロをふる</button></div>
+    <div id="disp" style="font-size:8em;">-</div>
+</body>
+<!-- Pythonのプログラム-->
 <script type="mpy">
-    import js
     import random
-    # 選択肢から1つ選ぶ --- (※1)
-    image_url = random.choice([
-        "https://n3s.nadesi.com/image.php?f=573.png", # 宝石のURL(書き換え) --- (※1a)
-        "https://n3s.nadesi.com/image.php?f=574.png", # 空箱のURL(書き換え) --- (※1b) 
-    ])
-    # 画像を表示するHTMLを動的に生成して表示 --- (※2)
-    js.document.write(f"<img src='{image_url}'>")
+    from pyscript import document
+
+    # クリックされたときに呼び出される関数
+    def show_dice(event):
+        r = random.randint(1,6)
+        disp = document.getElementById("disp")
+        disp.innerText = str(r)
+    
 </script>
