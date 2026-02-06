@@ -6,20 +6,32 @@
 <script type="module" src="https://pyscript.net/releases/2025.8.1/core.js"></script>
 <!-- HTMLの本体 -->
 <body style="text-align:center;">
-    <div><button mpy-click="show_dice">サイコロをふる</button></div>
-    <div id="disp" style="font-size:8em;">-</div>
+    <div style="padding:2em;">
+        <input id="user" type="text" placeholder="1から6の数字">
+        <button mpy-click="start">数当て</button><br>
+        <div id="result"></div>
+    </div>
 </body>
 <!-- Pythonのプログラム-->
 <script type="mpy">
     import random
     from pyscript import document
 
-    # クリックされたときに呼び出される関数
-    def show_dice(event):
-        r = random.randint(1,6)
-        disp = document.getElementById("disp")
-        disp.innerText = str(r)
-    
+    def start(event):
+        ans = random.randint(1,6)
+        user = document.getElementById("user").value
+        if user==str(ans):
+            msg = f"あたり！答えは{ans}でした。"
+            msg = f"あたり！答えは{ans}でした。"
+            color = "red"
+        else:
+            msg = f"はずれ！答えは{ans}でした。"
+            color = "blue"
+        result = document.getElementById("result")
+        result.textContent = msg
+        result.style.color = color    
 </script>
+
+
 
 
