@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script type="module" src="https://pyscript.net/releases/2025.8.1/core.js"></script>
+<script type="mpy">
+    import js
+    import random
+    # 選択肢から1つ選ぶ --- (※1)
+    image_url = random.choice([
+        "https://n3s.nadesi.com/image.php?f=573.png", # 宝石のURL(書き換え) --- (※1a)
+        "https://n3s.nadesi.com/image.php?f=574.png", # 空箱のURL(書き換え) --- (※1b) 
+    ])
+    # 画像を表示するHTMLを動的に生成して表示 --- (※2)
+    js.document.write(f"<img src='{image_url}'>")
+</script>
