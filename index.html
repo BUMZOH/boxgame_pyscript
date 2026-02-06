@@ -1,36 +1,63 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
-<!-- モバイル端末用の設定 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- PyScriptを読み込む-->
 <script type="module" src="https://pyscript.net/releases/2025.8.1/core.js"></script>
-<!-- HTMLの本体 -->
-<body style="text-align:center;">
-    <div style="padding:2em;">
-        <input id="user" type="text" placeholder="1から6の数字">
-        <button mpy-click="start">数当て</button><br>
-        <div id="result"></div>
+<!--- HTMLの本体 --->
+<body>
+    <div><button mpy-click="start">ルーレットを回す</button></div>
+    <div id="image_area">
+        <img id="roulette" src="roulette.png">
     </div>
+    <div id="disp"></div>
 </body>
-<!-- Pythonのプログラム-->
+<!--- CSSの定義 --->
+<style>
+bogy { text-align: center;}
+#disp { font-size: 8m; color: white;}
+#image_area { padding-top: 100px;}
+#roulette {
+  width: 500px;
+  height: 500px;
+}
+/* 回転アニメーションを定義 */
+@keyframes spin {
+  from { transform: rotate(0deg);}
+  to { transform: rotate(360deg);}
+}
+</style>
 <script type="mpy">
     import random
     from pyscript import document
+    from js import setTimeout
 
     def start(event):
-        ans = random.randint(1,6)
-        user = document.getElementById("user").value
-        if user==str(ans):
-            msg = f"あたり！答えは{ans}でした。"
-            msg = f"あたり！答えは{ans}でした。"
-            color = "red"
+        disp = document.getElementById("disp")
+        disp.innerHTML = ""
+
+        roulette = document.getElementById("roulette")
+        roulette.style.animation = "spin 2s linear infinite"
+        setTimeout(stop, 2000)
+
+
+    def stop():
+        r = random.randint(0,36)
+        if r==0:
+            color = "green"
+        elif r%2==0:
+            color = "black"
         else:
-            msg = f"はずれ！答えは{ans}でした。"
-            color = "blue"
-        result = document.getElementById("result")
-        result.textContent = msg
-        result.style.color = color    
+            color = "red"
+
+        disp = document.getElementById("disp")
+        disp.innerHTML = f"<div style='background-color:{color}'>{r}</div>"
+
+        roulette = document.getElementById("roulette")
+        roulette.style.animation = "none"
+
+
 </script>
+
+
 
 
 
