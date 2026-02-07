@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="module" src="https://pyscript.net/releases/2025.8.1/core.js"></script>
+<!--- HTMLの本体 --->
+<body>
+    <div><button mpy-click="start">ルーレットを回す</button></div>
+    <div id="image_area">
+        <img id="roulette" src="roulette.png">
+    </div>
+    <div id="disp"></div>
+</body>
+<!--- CSSの定義 --->
+<style>
+bogy { text-align: center;}
+#disp { font-size: 8m; color: white;}
+#image_area { padding-top: 100px;}
+#roulette {
+  width: 500px;
+  height: 500px;
+}
+/* 回転アニメーションを定義 */
+@keyframes spin {
+  from { transform: rotate(0deg);}
+  to { transform: rotate(360deg);}
+}
+</style>
+<script type="mpy">
+    import random
+    from pyscript import document
+    from js import setTimeout
+
+    def start(event):
+        disp = document.getElementById("disp")
+        disp.innerHTML = ""
+
+        roulette = document.getElementById("roulette")
+        roulette.style.animation = "spin 2s linear infinite"
+        setTimeout(stop, 2000)
+
+
+    def stop():
+        r = random.randint(0,36)
+        if r==0:
+            color = "green"
+        elif r%2==0:
+            color = "black"
+        else:
+            color = "red"
+
+        disp = document.getElementById("disp")
+        disp.innerHTML = f"<div style='background-color:{color}'>{r}</div>"
+
+        roulette = document.getElementById("roulette")
+        roulette.style.animation = "none"
+
+
+</script>
+
+
+
+
+
+

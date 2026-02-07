@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head><!-- HTMLのヘッダ -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        h3 { color: white; background-color: blue; }
+        body { text-align: center; font-size: 2.5em; }
+        button { font-size: 1.0em; width: 7em; margin: 0.1em; }
+    </style>
+</head>
+<body><!-- HTMLの本体 -->
+    <h3>ジャンケンで勝負</h3>
+    <div>
+        <div id="disp"></div>
+        <div><!-- ジャンケンの手のボタン -->
+            <button mpy-click="check_goo">✊グー</button>
+            <button mpy-click="check_choki">✌チョキ</button>
+            <button mpy-click="check_paa">✋パー</button>
+        </div>
+    </div>
+</body>
+<!-- PyScriptの取り込みとプログラム -->
+<script type="module" src="https://pyscript.net/releases/2025.8.1/core.js"></script>
+<script type="mpy">
+    import random
+    from pyscript import document
+
+    GOO = 0
+    CHOKI = 1
+    PAA = 2
+    HANDS = ["✊グー", "✌チョキ","✋パー"]
+    RESULTS = ["あいこ", "😊勝ち", "😭負け"]
+
+    def check_goo(event):
+        check(GOO)
+    def check_choki(event):
+        check(CHOKI)
+    def check_paa(event):
+        check(PAA)
+
+    def check(user):
+        com = random.randint(0,2)
+        result = janken(user, com)
+        disp = document.getElementById("disp")
+        disp.innerHTML = (
+            f"相手: {HANDS[com]}<br>"
+            f"自分: {HANDS[user]}<br><hr>"
+            f"判定: {RESULTS[result]}"
+        )
+
+
+    def janken(user, com):
+        # あいこ
+        if user==com:
+            return 0
+        # ユーザーが価値
+        if (user==GOO) and (com==CHOKI):
+            return 1
+        if (user==CHOKI) and (com==PAA):
+            return 1
+        if (user==PAA) and (com==GOO):
+            return 1
+        # ユーザーが負け
+        return 2
+
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
