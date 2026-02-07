@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>モグラ叩き</title>
+    <!-- PyScript本体の読み込み -->
+    <script type="module" src="https://pyscript.net/releases/2025.8.1/core.js"></script>
+    <!-- Pythonメインプログラムを読み込み -->
+    <script type="mpy" src="main.py"></script>
+    <script type="mpy" src="click.py"></script>
+</head>
+<!-- ゲーム画面をHTMLで用意 -->    
+<body style="text-align: center;">
+    <h1 id="info" style="color: brown;">🔨モグラ叩き</h1>
+    <!-- ゲーム開始ボタン -->
+    <button id="start_button" mpy-click="start_button_on_click">ゲーム開始</button>
+    <br><br>
+    <!-- ゲーム画面となるCanvas要素 -->
+    <canvas id="canvas" width="600" height="400" mpy-click="canvas_on_click" style="border:1px solid black;"></canvas>
+    <img src="mogura.png" id="mogura_img" style="display: none;">
+    <img src="hatake.png" id="hatake_img" style="display: none;">
+</body>
+</html>
+
+
+
+
+
+
+
