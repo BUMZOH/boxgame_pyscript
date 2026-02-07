@@ -8,6 +8,8 @@
   
 [ライフゲーム](./lifegame.html)  
 
+[モグラ叩き](mogura/index.html)  
+
 
 
 
