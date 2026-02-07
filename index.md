@@ -1,7 +1,10 @@
 ## ゲーム一覧  
 
 [じゃんけんゲーム](./janken.html)  
-[偶数・奇数当てゲーム](./even_odd_game.html)
+[偶数・奇数当てゲーム](./even_odd_game.html)  
+[ルーレットゲーム](./click_roulette.html)  
+[ライフゲーム](./lifegame.html)  
+
 
 
 
